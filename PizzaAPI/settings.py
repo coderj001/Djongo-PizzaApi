@@ -53,6 +53,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PizzaAPI.wsgi.application'
 
+# MongoDB setup
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
@@ -63,6 +64,15 @@ DATABASES = {
         }
     }
 }
+
+# local mongodb setup
+#  DATABASES = {
+#        'default': {
+#            'ENGINE': 'djongo',
+#            'NAME': 'your-db-name',
+#        }
+#    }
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
