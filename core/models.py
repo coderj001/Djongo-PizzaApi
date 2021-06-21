@@ -4,6 +4,7 @@ from djongo import models
 class PizzaSize(models.Model):
 
     name = models.CharField(max_length=255)
+    objects = models.DjongoManager()
 
     class Meta:
         verbose_name = "PizzaSize"
@@ -20,6 +21,7 @@ class PizzaSize(models.Model):
 class PizzaTopping(models.Model):
 
     name = models.CharField(max_length=255)
+    objects = models.DjongoManager()
 
     class Meta:
         verbose_name = "PizzaTopping"
@@ -46,19 +48,21 @@ class Pizza(models.Model):
         default='regular',
         verbose_name='Type Of Pizza'
     )
-    size_pizza = models.OneToOneField(
-        PizzaSize,
-        related_name='pizza',
+    size_pizza = models.CharField(
+        max_length=120,
         verbose_name='Size Of Pizza',
-        on_delete=models.CASCADE
+        blank=False,
+        null=False
     )
-    topping_pizza = models.OneToOneField(
-        PizzaTopping,
-        related_name='pizza',
+    topping_pizza = models.CharField(
+        max_length=120,
         verbose_name='Topping For Pizza',
-        on_delete=models.CASCADE
+        blank=False,
+        null=False
     )
     description = models.TextField(blank=True, null=True)
+
+    objects = models.DjongoManager()
 
     class Meta:
         verbose_name = "Pizza"
@@ -66,3 +70,7 @@ class Pizza(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+        self.name = self.name.capitalize()
+        return super(Pizza, self).save(*args, **kwargs)
