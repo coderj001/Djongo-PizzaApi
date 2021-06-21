@@ -40,7 +40,6 @@ class Pizza(models.Model):
     PIZZA_TYPE = (
         ('regular', 'REGULAR'),
         ('square', 'SQUARE'),
-        ('pie', 'PIE'),
     )
     type_pizza = models.CharField(
         max_length=20,

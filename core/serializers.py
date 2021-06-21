@@ -66,12 +66,13 @@ class PizzaSerializer(ModelSerializer):
         topping_pizza = validated_data.pop('topping_pizza')
 
         if size_pizza is not None:
-            size_pizza_obj = PizzaSize.objects.get(name=size_pizza)
+            size_pizza_obj = PizzaSize.objects.get(name__iexact=size_pizza)
         else:
             size_pizza_obj = PizzaSize.objects.first()
 
         if topping_pizza is not None:
-            topping_pizza_obj = PizzaTopping.objects.get(name=topping_pizza)
+            topping_pizza_obj = PizzaTopping.objects.get(
+                name__iexact=topping_pizza)
         else:
             topping_pizza_obj = PizzaTopping.objects.first()
 

@@ -4,8 +4,8 @@ from core.views import PizzaSizeView, PizzaToppingView,  ListCreatePizzaView, Ed
 app_name = "core"
 
 urlpatterns = [
-    path('pizza-size/', PizzaSizeView.as_view()),
-    path('pizza-topping/', PizzaToppingView.as_view()),
-    path('pizza/', ListCreatePizzaView.as_view()),
-    path('pizza/<int:pk>', EditDeletePizzaView.as_view()),
+    path('pizza-size/', PizzaSizeView.as_view(), name='pizza_size'),
+    path('pizza-topping/', PizzaToppingView.as_view(), name='pizza_topping'),
+    path('pizza/', ListCreatePizzaView.as_view(), name='pizza'),
+    path('pizza/<int:pk>', EditDeletePizzaView.as_view(), name='pizza_id'),
 ]
