@@ -4,12 +4,18 @@
 
 This is project is base curd app built with MongoDB database connection.
 
+Online Deployed : [link](https://shrouded-cliffs-72504.herokuapp.com/)
+
 ### Installation
 
 1. Create a python virtual environment and install requirements by using cmd `pip install -r requirements.txt`
-2. Set up environment variable of secret_key and debug. You can get django secret_key using cmd `python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'`. And set in environment variable using cmd `export secret_key=<SECRET_KEY>`.
-3. Note if you set MongoDB on without auth on local machine then comment lines from 60 to 69 and uncomment lines from 71 to 77. Otherwise set environment variable for mongodb_user and mongodb_password.
-4. Now run following cmd `python ./manage.py migrate` and `python ./manage.py runserver`
+2. Add environment variable with config env file. And run `python manage.py runserver`.
+
+### Usage
+
+- For swagger ui use [link](https://shrouded-cliffs-72504.herokuapp.com/swagger/)
+- For redoc use [link](https://shrouded-cliffs-72504.herokuapp.com/redoc/)
+- Django has build-in admin panal [link](https://shrouded-cliffs-72504.herokuapp.com/admin) with username: admin and password: admin
 
 ### API ENDPOINTS
 
@@ -40,3 +46,8 @@ Base url route: http://localhost:8000/api
     - topping_pizza : if it present on /pizza-topping list then it only can be added
     - description : text
   - _DELETE_ - delete the pizza with id
+
+
+### Postman
+
+Use postman [file](./PizzaAPI.postman_collection.json) , export 'PizzaAPI.postman_collection.json' on postman software.
