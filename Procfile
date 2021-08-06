@@ -1,1 +1,1 @@
-web: gunicorn PizzaAPI.wsgi --log-file -
+web: gunicorn PizzaAPI.wsgi:application --log-file -

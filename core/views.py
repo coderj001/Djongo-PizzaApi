@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.generics import (
     ListCreateAPIView,
@@ -16,6 +17,10 @@ from core.serializers import (
     PizzaSizeSerializer,
     PizzaToppingSerializer
 )
+
+
+def index(request, *args, **kwargs):
+    return render(request, 'index.html')
 
 
 class PizzaToppingView(ListCreateAPIView):

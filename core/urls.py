@@ -3,7 +3,7 @@ from core.views import (
     PizzaSizeView,
     PizzaToppingView,
     ListCreatePizzaView,
-    EditDeletePizzaView
+    EditDeletePizzaView,
 )
 
 app_name = "core"
