@@ -10,9 +10,8 @@ django-filter = "*"
 dnspython = "*"
 djongo = "==1.3.3"
 drf-yasg = "*"
-coreapi = "*"
-whitenoise = "*"
 gunicorn = "*"
+coreapi = "*"
 
 [dev-packages]
 django_linter = "*"
