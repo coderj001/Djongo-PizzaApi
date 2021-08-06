@@ -12,6 +12,7 @@ djongo = "==1.3.3"
 drf-yasg = "*"
 gunicorn = "*"
 coreapi = "*"
+whitenoise = "*"
 
 [dev-packages]
 django_linter = "*"

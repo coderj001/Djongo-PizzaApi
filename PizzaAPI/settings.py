@@ -30,7 +30,12 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = list()
+
+if not DEBUG:
+    MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware']
+
+MIDDLEWARE += [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -125,3 +130,6 @@ SWAGGER_SETTINGS = {
 REDOC_SETTINGS = {
     'LAZY_RENDERING': False,
 }
+
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
