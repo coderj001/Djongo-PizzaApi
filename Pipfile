@@ -6,12 +6,14 @@ name = "pypi"
 [packages]
 Django = "*"
 djangorestframework = "*"
+django-filter = "*"
 dnspython = "*"
 djongo = "==1.3.3"
-django-filter = "*"
+drf-yasg = "*"
+coreapi = "*"
 
 [dev-packages]
-django-linter = "*"
+django_linter = "*"
 pylint = "*"
 ipdb = "*"
 ipython = "*"
@@ -20,4 +22,4 @@ rope = "*"
 autopep8 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"

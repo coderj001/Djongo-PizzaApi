@@ -8,7 +8,7 @@ SECRET_KEY = os.environ.get('secret_key')
 
 DEBUG = bool(strtobool(os.environ.get('debug')))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -20,7 +20,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_filters',
-
+    'drf_yasg',
 
     # apps
     'core.apps.CoreConfig',
@@ -56,25 +56,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PizzaAPI.wsgi.application'
 
-# MongoDB setup
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'pizzaapi',
-        'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-                'host': f"mongodb+srv://{os.environ.get('mongodb_user')}:{os.environ.get('mongodb_password')}@cluster0.hq1pn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+if bool(strtobool(os.environ.get('mongodb'))):
+    # MongoDB setup
+    DATABASES = {
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'pizzaapi',
+            'ENFORCE_SCHEMA': False,
+            'CLIENT': {
+                    'host': f"mongodb+srv://{os.environ.get('mongodb_user')}:{os.environ.get('mongodb_password')}@cluster0.hq1pn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+            }
         }
     }
-}
-
-# local mongodb setup
-#  DATABASES = {
-#        'default': {
-#            'ENGINE': 'djongo',
-#            'NAME': 'your-db-name',
-#        }
-#    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -105,3 +105,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+}
+
+REDOC_SETTINGS = {
+    'LAZY_RENDERING': False,
+}

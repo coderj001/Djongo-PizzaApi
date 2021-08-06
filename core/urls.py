@@ -1,5 +1,10 @@
 from django.urls import path, include
-from core.views import PizzaSizeView, PizzaToppingView,  ListCreatePizzaView, EditDeletePizzaView
+from core.views import (
+    PizzaSizeView,
+    PizzaToppingView,
+    ListCreatePizzaView,
+    EditDeletePizzaView
+)
 
 app_name = "core"
 
