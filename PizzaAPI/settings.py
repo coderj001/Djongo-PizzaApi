@@ -32,11 +32,12 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = list()
 
+MIDDLEWARE += ['django.middleware.security.SecurityMiddleware']
+
 if not DEBUG:
     MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware']
 
 MIDDLEWARE += [
-    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
